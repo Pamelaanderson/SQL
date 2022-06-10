@@ -1,0 +1,49 @@
+--create a grocery store database
+
+
+CREATE TABLE groceries 
+(id INTEGER PRIMARY KEY, 
+name TEXT, 
+price INTEGER, 
+quantity INTEGER, 
+aisle INTEGER, 
+rating INTEGER)
+;
+
+INSERT INTO groceries 
+VALUES (1, "Bread", 3.99, 2, 8, 4.4);
+INSERT INTO groceries 
+VALUES (2, "Milk", 5.15, 4, 11, 5);
+INSERT INTO groceries 
+VALUES (3, "Eggs", 2.39, 5, 12, 3.7);
+INSERT INTO groceries 
+VALUES (4, "Butter", 1.99, 8, 2, 4.5);
+INSERT INTO groceries 
+VALUES (5, "Flour", 6.99, 3, 4, 4.3);
+INSERT INTO groceries 
+VALUES (6, "Sugar", 4.55, 5, 7, 4.2);
+
+--display the database ordered by price.
+SELECT * FROM groceries;
+ORDER BY price desc;
+
+--what is the avg price of items?
+SELECT AVG(price) "avg price"
+FROM groceries
+;
+-- What are the most 5 popular items?
+SELECT name, price, rating
+FROM groceries
+ORDER BY rating desc
+LIMIT 5;
+
+-- To show the requirement for more than 15 items being sold.
+SELECT SUM(quantity) 
+FROM groceries;
+
+--Items that are greater than $3.
+SELECT * FROM groceries WHERE price >3 ORDER BY aisle;
+
+--Items that are less than $3.
+SELECT * FROM groceries WHERE price <=3 ORDER BY aisle;
+
